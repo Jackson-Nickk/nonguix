@@ -1,11 +1,11 @@
-name: 'mirror'
+name: 'nonguix-mirror'
 on:
   push:
     branches:
         - __mirror
   schedule:
     # Run everyday at 3 AM UTC
-    - cron: '0 3 * * *'
+    - cron: '1 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -20,5 +20,5 @@ jobs:
         id: mirror
         uses: bridgelightcloud/github-mirror-action@v3
         with:
-          origin: ''
+          origin: 'https://gitlab.com/nonguix/nonguix.git'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
